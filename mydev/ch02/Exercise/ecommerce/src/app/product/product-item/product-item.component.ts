@@ -1,38 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Stock, Product } from '../../model/product';
+
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
-  public name: string;
-  public price: number;
-  public imagePath: string;
-  public onSale: boolean;
-  public quantityInCart: number;
-  
+
+  public product: Product;
 
   constructor() { }
 
-  notInCart(): boolean {
-    return this.quantityInCart <= 0;
-  }
 
   ngOnInit() {
-      this.name = 'Amaze-o-Widget from Ronco';
-      this.imagePath = '../../../assets/img/Nerd.jpg'
-      this.price = 19.85;
-      this.onSale = true;
-      this.quantityInCart = 4;
+
+      this.product = new Product('Amaze-o-Widget from Ronco',19.85,'../../../assets/img/Nerd.jpg',true);
+  }
+
+  notInCart(): boolean {
+    return this.product.quantityInCart <= 0;
   }
 
   addToCart(event) {
-    this.quantityInCart++;
+    this.product.quantityInCart++;
   }
 
   subtractFromCart(event) {
-    this.quantityInCart--;
+    this.product.quantityInCart--;
   }
 
 }
