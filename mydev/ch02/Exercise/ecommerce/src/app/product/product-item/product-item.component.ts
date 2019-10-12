@@ -18,7 +18,7 @@ export class ProductItemComponent implements OnInit {
       this.name = 'Amaze-o-Widget from Ronco';
       this.imagePath = '../../../assets/img/Nerd.jpg'
       this.price = 19.85;
-      this.onSale = false;
+      this.onSale = true;
   }
 
 }

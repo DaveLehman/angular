@@ -14,3 +14,11 @@
     max-width: 200px;
     height: auto;
 }
+
+.onSaleYes {
+    background-color: limegreen;
+}
+
+.onSaleNo {
+    background-color: lightgrey;
+}
