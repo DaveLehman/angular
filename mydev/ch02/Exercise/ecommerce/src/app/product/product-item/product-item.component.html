@@ -5,6 +5,13 @@
         <div class="price">${{price}}</div>
         <div class="image"><img src='{{imagePath}}'></div>
     </div>
+    <hr />
+    <div class="cart">
+        <p>Qty: {{quantityInCart}}  </p> 
+        <button (click)="addToCart($event)">+</button>
+        <button (click)="subtractFromCart($event)"
+            [disabled] = "notInCart()">-</button>
+    </div>
 </div>
 
 

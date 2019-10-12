@@ -10,15 +10,29 @@ export class ProductItemComponent implements OnInit {
   public price: number;
   public imagePath: string;
   public onSale: boolean;
+  public quantityInCart: number;
   
 
   constructor() { }
+
+  notInCart(): boolean {
+    return this.quantityInCart <= 0;
+  }
 
   ngOnInit() {
       this.name = 'Amaze-o-Widget from Ronco';
       this.imagePath = '../../../assets/img/Nerd.jpg'
       this.price = 19.85;
       this.onSale = true;
+      this.quantityInCart = 4;
+  }
+
+  addToCart(event) {
+    this.quantityInCart++;
+  }
+
+  subtractFromCart(event) {
+    this.quantityInCart--;
   }
 
 }

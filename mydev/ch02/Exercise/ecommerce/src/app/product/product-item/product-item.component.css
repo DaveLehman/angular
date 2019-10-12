@@ -22,3 +22,10 @@
 .onSaleNo {
     background-color: lightgrey;
 }
+
+.cart {
+    display: inline;
+}
+.cart p {
+    align-self: right;
+}
