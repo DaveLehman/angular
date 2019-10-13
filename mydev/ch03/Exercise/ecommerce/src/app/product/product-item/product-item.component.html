@@ -1,0 +1,18 @@
+<div class="product-container" >
+    <div class="background"
+        [class]="product.onSale ? 'onSaleYes' : 'onSaleNo'">
+        <div class="name"><h3>{{product.name}}</h3></div>
+        <div class="price">${{product.price}}</div>
+        <div class="image"><img src='{{product.imagePath}}'></div>
+    </div>
+    <hr />
+    <div class="cart">
+        <p>Qty: {{product.quantityInCart}}  </p> 
+        <button (click)="product.addToCart($event)">+</button>
+        <button (click)="product.subtractFromCart($event)"
+            [disabled] = "product.notInCart()">-</button>
+    </div>
+</div>
+
+
+
