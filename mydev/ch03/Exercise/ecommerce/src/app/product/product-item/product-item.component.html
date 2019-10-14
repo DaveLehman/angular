@@ -1,4 +1,4 @@
-<div class="product-container" >
+<div class="product-container" *ngFor="let product of products; index as i" >
     <div class="background"
         [class]="product.onSale ? 'onSaleYes' : 'onSaleNo'">
         <div class="name"><h3>{{product.name}}</h3></div>
@@ -8,10 +8,16 @@
     <hr />
     <div class="cart">
         <p>Qty: {{product.quantityInCart}}  </p> 
-        <button (click)="product.addToCart($event)">+</button>
-        <button (click)="product.subtractFromCart($event)"
-            [disabled] = "product.notInCart()">-</button>
+        <select>
+            <option [value]="qty" *ngFor="let qty of quantities">{{qty}}</option>
+        </select>
     </div>
+    <div>
+        <button (click)="product.incrementCart($event,index)">+</button>
+        <button (click)="product.decrementCart($event,index)"
+        [disabled]="product.notInCart()"
+            >-</button>
+
 </div>
 
 

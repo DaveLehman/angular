@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Stock, Product } from '../../model/product';
+import {  Product } from '../../model/product';
 
 @Component({
   selector: 'app-product-item',
@@ -9,26 +9,38 @@ import { Stock, Product } from '../../model/product';
 })
 export class ProductItemComponent implements OnInit {
 
-  public product: Product;
+  public products: Array<Product>;
+  private quantities: Array<number>;
 
   constructor() { }
 
 
   ngOnInit() {
 
-      this.product = new Product('Amaze-o-Widget from Ronco',19.85,'../../../assets/img/Nerd.jpg',true);
+      this.products = [
+        new Product('Amaze-o-Widget from Ronco',19.85,
+          '../../../assets/img/Nerd.jpg',true),
+        new Product('Snarled Masses of Cable!!',16.99,
+          '../../../assets/img/ethertangle.jpg',false),
+        new Product('Random Keyclick Generator',5.95,
+        '../../../assets/img/questionbutton.jpg',true)
+      ];  
+      this.quantities = [];
+      for (let i = 1; i <= 20; i++) {
+        this.quantities.push(i);
+      }
   }
 
   notInCart(): boolean {
-    return this.product.quantityInCart <= 0;
+    return products[index].quantityInCart <= 0;
   }
 
-  addToCart(event) {
-    this.product.quantityInCart++;
+ incrementCart(event,index) {
+    this.products[index].quantityInCart++;
   }
 
-  subtractFromCart(event) {
-    this.product.quantityInCart--;
+  decrementCart(event,index) {
+    this.products[index].quantityInCart--;
   }
 
 }

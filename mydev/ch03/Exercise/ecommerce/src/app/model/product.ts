@@ -12,11 +12,11 @@ export class Product {
     return this.quantityInCart <= 0;
   }
 
-  addToCart(event) {
+  incrementCart(event) {
     this.quantityInCart++;
   }
 
-  subtractFromCart(event) {
+  decrementCart(event) {
     this.quantityInCart--;
   }
 }
