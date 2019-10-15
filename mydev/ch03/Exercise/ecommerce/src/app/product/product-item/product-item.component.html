@@ -1,23 +1,32 @@
 <div class="product-container" *ngFor="let product of products; index as i" >
     <div class="background"
-        [class]="product.onSale ? 'onSaleYes' : 'onSaleNo'">
+        [class.topHalfSale]="product.onSale"
+        [class.topHalfNoSale]="!product.onSale">
         <div class="name"><h3>{{product.name}}</h3></div>
         <div class="price">${{product.price}}</div>
         <div class="image"><img src='{{product.imagePath}}'></div>
     </div>
     <hr />
-    <div class="cart">
-        <p>Qty: {{product.quantityInCart}}  </p> 
-        <select>
-            <option [value]="qty" *ngFor="let qty of quantities">{{qty}}</option>
-        </select>
-    </div>
-    <div>
-        <button (click)="product.incrementCart($event,index)">+</button>
-        <button (click)="product.decrementCart($event,index)"
-        [disabled]="product.notInCart()"
-            >-</button>
+    <div class="cart"
+        [class.bottomHalfSale]="product.onSale"
+        [class.bottomHalfNoSale]="!product.onSale">
+        <div class="qtyDisplay">
+            <p>Qty: {{product.quantityInCart}}  </p> 
+            <select>
+                <option [value]="qty" *ngFor="let qty of quantities">{{qty}}</option>
+            </select>
+        </div>
 
+        <br />
+
+        <div class="buttons">
+            <button (click)="product.incrementCart($event,index)">+</button>
+            <button (click)="product.decrementCart($event,index)"
+            *ngIf="!product.notInCart()"
+                >-</button>
+        </div>
+
+    </div>
 </div>
 
 

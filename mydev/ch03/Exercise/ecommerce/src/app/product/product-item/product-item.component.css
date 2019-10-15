@@ -3,30 +3,42 @@
     border-radius: 5px;
     display: inline-block;
     padding: 10px;
-    vertical-align: top;
-    
+    vertical-align: top;   
 }
+
 .product-container .name h3, .product-container .name h4 {
     display: inline-block;
+}
 
+.cart {
+    display: inline-block;
+    padding: 10px;
+    min-width: 200px;
+    vertical-align: top; 
 }
 
 .product-container .image img {
     max-width: 200px;
     height: auto;
 }
-
- .onSaleYes {
+.topHalfSale {
     background-color: limegreen;
 }
 
-.onSaleNo {
+.topHalfNoSale {
     background-color: darkgrey;
 }
 
-.cart {
-    display: inline;
+.bottomHalfSale {
     background-color: lightgreen;
 }
+
+.bottomHalfNoSale{
+    background-color: lightgrey;
+}
+
+
+
+
 
 

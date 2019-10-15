@@ -31,16 +31,5 @@ export class ProductItemComponent implements OnInit {
       }
   }
 
-  notInCart(): boolean {
-    return products[index].quantityInCart <= 0;
-  }
-
- incrementCart(event,index) {
-    this.products[index].quantityInCart++;
-  }
-
-  decrementCart(event,index) {
-    this.products[index].quantityInCart--;
-  }
 
 }
