@@ -10,30 +10,14 @@ import { Stock } from '../app/model/stock';
 export class AppComponent implements OnInit {
   title = 'Stock Market App';
 
-  public stock: Stock;
-  private counter: number = 1;
+  public stockObj: Stock;
 
   ngOnInit(): void {
-    this.stock = new Stock('Test Stock Company','TSC',85,80);
+    this.stockObj = new Stock('Test Stock Company', 'TSC', 85, 80);
   }
 
-  onToggleFavorite(stock: Stock) {
-    // This will update the value in the stock item component
-    // because it is triggered as the result of an event
-    console.log('Favorite for stock ', stock, ' was triggered');
-    this.stock.favorite = !this.stock.favorite;
+  testMethod() {
+    console.log('Test method in AppComponent triggered');
   }
 
-  changeStockObject() {
-    // This will update the value in the stock item component
-    // because we are creating a new reference for the stock input
-    this.stock = new Stock('Test Stock Company - ' + this.counter,'TSC' + this.counter++,85,80);
-  }
-
-  changeStockPrice() {
-    // This will update the value in the stock item component
-    // because it is changing the same reference and angular will
-    // not check for it in the OnPush change detection strategy
-    this.stock.price += 10;
-  }
 }
