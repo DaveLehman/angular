@@ -11,13 +11,29 @@ export class AppComponent implements OnInit {
   title = 'Stock Market App';
 
   public stock: Stock;
+  private counter: number = 1;
 
   ngOnInit(): void {
     this.stock = new Stock('Test Stock Company','TSC',85,80);
   }
 
   onToggleFavorite(stock: Stock) {
+    // This will update the value in the stock item component
+    // because it is triggered as the result of an event
     console.log('Favorite for stock ', stock, ' was triggered');
     this.stock.favorite = !this.stock.favorite;
+  }
+
+  changeStockObject() {
+    // This will update the value in the stock item component
+    // because we are creating a new reference for the stock input
+    this.stock = new Stock('Test Stock Company - ' + this.counter,'TSC' + this.counter++,85,80);
+  }
+
+  changeStockPrice() {
+    // This will update the value in the stock item component
+    // because it is changing the same reference and angular will
+    // not check for it in the OnPush change detection strategy
+    this.stock.price += 10;
   }
 }
