@@ -1,0 +1,5 @@
+in prior root folder
+							ng new projectName
+cd projectNameFolder
+							ng generate component stock/stock-item
+							ng generate class model/stock
