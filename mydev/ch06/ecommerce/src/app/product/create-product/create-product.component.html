@@ -1,0 +1,57 @@
+<h2>Create Product Form</h2>
+
+<div class="form-group">
+    <h4 class="error">{{message}}</h4>
+    <form (ngSubmit)="createProduct(productForm)" #productForm="ngForm" >
+        <div ngModelGroup="product">
+            <div class="product-name">
+                <input type="text"
+                    ngModel
+                    #productName="ngModel"
+                    placeholder="Product Name"
+                    required
+                    name="name">
+            </div>
+            <div class="error" *ngIf="(productName.dirty || message) && productName.invalid">
+                        <!-- Cheating, since there is only one way the product name field could be invalid -->
+                Product Name is required
+            </div>
+            <div class="product-price">
+                <input type="text"
+                    ngModel
+                    name="price"
+                    placeholder="Product Price"
+                    #productPrice="ngModel"
+                    required>
+            </div>
+            <div class="error" *ngIf="(productPrice.dirty || message) && productPrice.invalid">
+                    Product price is required
+            </div>
+            <div class="product-url">
+                    <input type="text"
+                            ngModel
+                            name="imageUrl"
+                            placeholder="Product Image URL"
+                            #productImageUrl="ngModel"
+                           
+                            required>
+                  </div>
+                  <!--   pattern="^http(s?)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?$"  -->
+                  <div class="error" *ngIf="(productImageUrl.dirty || message) && productImageUrl.invalid">
+                    <div *ngIf="productImageUrl.errors.required">
+                      Product Image URL is required
+                    </div>
+                    <div *ngIf="productImageUrl.errors.pattern">
+                      Product Image URL does not seem to be a valid URL
+                    </div>
+                  </div>           
+        </div>
+        <div class="product-onSale">
+            <input type="checkbox"
+                ngModel
+                name="onSale">On Sale
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</div>
+

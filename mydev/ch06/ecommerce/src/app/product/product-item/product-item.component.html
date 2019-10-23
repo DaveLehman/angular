@@ -1,0 +1,14 @@
+<div class="product-item" [class.sale]="product.onSale">
+
+    <div class="details">
+      <div class="name"><h3>{{product.name}}</h3></div>
+      <div class="price"><h4>$ {{product.price}}</h4></div>
+      <div class="image"><img [src]="product.imagePath"></div>
+      <div>
+        <button class="decrement" *ngIf="product.quantityInCart > 0" (click)="decrementInCart()">-</button>
+        <span class="qty">{{product.quantityInCart}}</span>
+        <button class="increment" (click)="incrementInCart()">+</button>
+      </div>
+    </div>
+</div>
+
