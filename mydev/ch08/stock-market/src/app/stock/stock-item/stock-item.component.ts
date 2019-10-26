@@ -7,17 +7,17 @@ import { Stock } from '../../model/stock';
   templateUrl: './stock-item.component.html',
   styleUrls: ['./stock-item.component.css']
 })
-export class StockItemComponent  {
+export class StockItemComponent {
 
   @Input() public stock: Stock;
   @Output() toggleFavorite: EventEmitter<Stock>;
 
-  constructor() { 
+  constructor() {
     this.toggleFavorite = new EventEmitter<Stock>();
-  }
+   }
 
   onToggleFavorite(event) {
     this.toggleFavorite.emit(this.stock);
   }
-
 }
+
