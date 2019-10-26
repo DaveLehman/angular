@@ -26,15 +26,19 @@ createForm() {
       name: [null, Validators.required],
       code: [null, [Validators.required, Validators.minLength(2)]],
       price: [0, [Validators.required, Validators.min(0)]],
+      // initialize notablePeople as a FormArray instance
       notablePeople: this.fb.array([])
   });
 }
 
 get notablePeople(): FormArray {
+  // getter to make accessing the underlying FormArray easier
+  // instead of this.stockForm.get('notablepeople')
   return this.stockForm.get('notablePeople') as FormArray;
 }
 
 addNotablePerson() {
+  // add a new FormGroup to the FormArray
   this.notablePeople.push(this.fb.group({
     name: ['', Validators.required],
     title: ['', Validators.required]
@@ -42,6 +46,7 @@ addNotablePerson() {
 }
 
 removeNotablePerson(index: number) {
+  // remove a FormGroup from the FormArray
   this.notablePeople.removeAt(index);
 }
 

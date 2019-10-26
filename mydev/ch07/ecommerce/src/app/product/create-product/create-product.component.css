@@ -1,0 +1,11 @@
+.err {
+    color: red;
+}
+
+.invalidForm {
+    background-color: pink;
+}
+
+.validForm {
+    background-color: lightgreen;
+}
