@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { StockItemComponent } from '../app/stock/stock-item/stock-item.component';
 import { CreateStockComponent } from '../app/stock/create-stock/create-stock.component';
 import { StockListComponent } from './stock/stock-list/stock-list.component'
-import {  StockService } from '../app/services/stock.service';
+import { StockService } from '../app/services/stock.service';
+import { MessageService } from '../app/services/message.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {  StockService } from '../app/services/stock.service';
     FormsModule
   ],
   providers: [
-    StockService
+    StockService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
