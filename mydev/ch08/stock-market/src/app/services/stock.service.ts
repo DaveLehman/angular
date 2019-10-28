@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import { _throw as ObservableThrow } from 'rxjs/observable/throw';
+import { of as ObservableOf } from 'rxjs/observable/of';
+
+
 import { Stock } from '../model/stock';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(//{
+  //providedIn: 'root'
+//})
+)
 export class StockService {
 
   private stocks: Stock[];
@@ -16,19 +23,19 @@ export class StockService {
     ];
    }
 
-   getStocks() : Stock[] {
-     return this.stocks;
+   getStocks() : Observable<Stock[]> {
+     return ObservableOf(this.stocks);
    }
 
-   createStock(stock : Stock) {
+   createStock(stock : Stock) : Observable<any> {
       // if we're passed a stock that exists, refuse
       let foundStock = this.stocks.find(each => each.code === stock.code);
       if (foundStock) {
-        return false;
+        return ObservableThrow({msg: 'Stock with code ' + stock.code + ' already exists'});
       }
       // otherwise, add to stocks array
       this.stocks.push(stock);
-      return true;
+      return ObservableOf({msg: 'Stock with code ' + stock.code + ' successfully created'});
    }
 
    toggleFavorite(stock: Stock) {

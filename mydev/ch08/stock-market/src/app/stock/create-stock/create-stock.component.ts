@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stock } from '../../model/stock';
 import { StockService } from '../../services/stock.service';
 import { MessageService } from '../../services/message.service';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-create-stock',
@@ -26,19 +27,17 @@ export class CreateStockComponent {
 
   createStock(stockForm) {
     if(stockForm.valid) {
-      let created = this.stockService.createStock(this.stock);
-      if (created) {
-        this.messageService.message = 'Successfully created stock with stock code: ' + this.stock.code;
-        this.stock = new Stock('','',0,0,'NASDAQ');
+      this.stockService.createStock(this.stock)
+        .subscribe((result: any) => {
+          this.messageService.message = result.msg;
+          this.stock = new Stock('','',0,0,'NASDAQ');
+        }, (err) => {
+          this.messageService.message = err.msg;
+        });
       }
       else {
-        this.messageService.message = 'Stock with stock code: ' + this.stock.code + ' already exists.'
+        console.error('Stock form is in an invalid state');
       }
-    }
-    else {
-      console.error('Stock form is in an invalid state');
-    }
-
   } // end createStock
 }
 
