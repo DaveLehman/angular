@@ -1,0 +1,73 @@
+<h2>Create New Product Form</h2>
+<div *ngIf="message">{{ message }}</div>
+<div class="form-group" [class]="productFormGroup.valid ? 'validForm' : 'invalidForm'" >
+    <form [formGroup]="productFormGroup" (ngSubmit)="onSubmit()">
+        <div>ID:</div>
+        <div class="product-id">
+            <input type="number"
+                placeholder="Product ID"
+                name="productID"
+                formControlName="id">
+        </div>
+        <div class="err" *ngIf="id.invalid && (id.dirty || id.touched)">
+            <div *ngIf="id.errors.required">ID is required</div>
+            <div *ngIf="id.errors.min">ID must be greater than zero</div>
+        </div>
+
+        <div>Product Name:</div>
+        <div class="product-name">
+            <input type="text"
+                placeholder="Product Name (REQUIRED)"
+                name="productName"
+                formControlName="name">
+        </div>
+        <div class="err" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors.required">Name is required</div>        
+        </div>
+
+        <div>Image:</div>
+        <div class="product-imagePath">
+            <input type="text"
+                placeholder="Product Image Path"
+                name="productImagePath"
+                formControlName="imagePath">
+        </div>
+        <div class="err" *ngIf="imagePath.invalid && (imagePath.dirty || imagePath.touched)">
+                <div *ngIf="imagePath.errors.required">Path to an image is required</div>        
+        </div>
+
+        <div>Price:</div>
+        <div class="product-price">
+            <input type="number"
+                placeholder="Price"
+                name="productPrice"
+                formControlName="price">
+        </div>
+        <div class="err" *ngIf="price.invalid && (price.dirty || price.touched)">
+                <div *ngIf="price.errors.required">Product price is required</div>
+                <div *ngIf="price.errors.min">Price must be $1.00 or greater</div>        
+        </div>
+        <div>Qty:</div>
+        <div class="product-quantity">
+            <input type="number"
+                placeholder="Quantity in Cart"
+                name="productQuantity"
+                formControlName="quantityInCart">
+        </div>
+        <div class="err" *ngIf="quantityInCart.invalid && (quantityInCart.dirty || quantityInCart.touched)">
+                <div *ngIf="quantityInCart.errors.required">Quantity is required</div>
+                <div *ngIf="quantityInCart.errors.min">Quantity cannot be negative</div>        
+        </div>
+
+        <div class="product-onSale">
+            <input type="checkbox"
+                name="productOnSale"
+                formControlName="onSale">On Sale
+        </div>
+        <button type="submit" [disabled]="!productFormGroup.valid">Submit</button>
+    </form>
+
+</div>
+
+<p>Form Control value: {{ productFormGroup.value | json }}</p>
+<p>Form Control status: {{ productFormGroup.status | json }}</p>
