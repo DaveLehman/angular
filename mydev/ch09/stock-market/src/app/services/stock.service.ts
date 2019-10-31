@@ -12,22 +12,18 @@ export class StockService {
 
   constructor(private http : HttpClient) { }
 
-   getStocks() : Observable<Stock[]> {
-     return this.http.get<Stock[]>('/api/stock');
-   }
+  getStocks(query: string) : Observable<Stock[]> {
+    return this.http.get<Stock[]>(`/api/stock?q=${query}`);
+  }
 
-   createStock(stock : Stock) : Observable<any> {
-      return this.http.post('/api/stock', stock);
-   }
+  createStock(stock: Stock): Observable<any> {
+    return this.http.post('/api/stock', stock);
+  }
 
-   toggleFavorite(stock: Stock) : Observable<Stock> {
-     return this.http.patch<Stock>('/api/stock' + stock.code, 
-     {
-       favorite: !stock.favorite
-     });
-   }
-
-   makeFailingCall() {
-     return this.http.get('/api/fail');
-   }
+  toggleFavorite(stock: Stock): Observable<Stock> {
+    return this.http.patch<Stock>('/api/stock/' + stock.code,
+      {
+        favorite: !stock.favorite
+      });
+  }
 }

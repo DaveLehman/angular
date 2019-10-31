@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../../model/stock';
 import { StockService } from '../../services/stock.service';
-import { MessageService } from '../../services/message.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
