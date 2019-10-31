@@ -13,7 +13,7 @@ export class StockService {
   constructor(private http : HttpClient) { }
 
    getStocks() : Observable<Stock[]> {
-     return this.http.get<Stock[]>('api/stock');
+     return this.http.get<Stock[]>('/api/stock');
    }
 
    createStock(stock : Stock) : Observable<any> {
@@ -25,5 +25,9 @@ export class StockService {
      {
        favorite: !stock.favorite
      });
+   }
+
+   makeFailingCall() {
+     return this.http.get('/api/fail');
    }
 }
