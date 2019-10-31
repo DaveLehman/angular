@@ -46,4 +46,10 @@ export class CreateStockComponent {
       }
   } // end createStock
 
+  setStockPrice(price) {
+    this.stock.price = price;
+    this.stock.previousPrice = price;
+  }
+
+
 }
