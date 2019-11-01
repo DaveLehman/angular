@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onQuantityChange(change: ProductQuantityChange) {
-    this.productService.changeQuantity(change.product.id, change.product.quantityInCart);
+    this.productService.changeQuantity(change.product.id, change.changeInQuantity);
 
   }
 

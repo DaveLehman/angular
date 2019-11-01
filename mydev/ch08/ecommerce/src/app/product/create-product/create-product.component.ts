@@ -17,11 +17,9 @@ let counter = 4;
 export class CreateProductComponent {
 
   public productFormGroup: FormGroup;
-  public product: Product;
   public message=null;
 
   constructor(private fb: FormBuilder, private productService : ProductService) {
-    this.product = new Product(counter++,'New Product','../../../assets/img/Nerd.jpg',0,false,0);
     this.createForm();
    } 
 
@@ -35,11 +33,11 @@ export class CreateProductComponent {
       quantityInCart: [0,[Validators.required, Validators.min(0)]],
      });
      if(this.productFormGroup.valid) {
-       this.productService.createProduct(this.product)
+       const product: Product = this.productFormGroup.value.product;
+       this.productService.createProduct(product)
        .subscribe((result: any) => {
          this.message = result.msg;
-         this.product = new Product(counter++,'New Product','../../../assets/img/Nerd.jpg',0,false,0);
-       }, (err) => {
+     }, (err) => {
          this.message = err.msg;
        });
      }
