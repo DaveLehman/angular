@@ -1,0 +1,9 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <app-product-list #productList></app-product-list>
+</div>
+<hr />
+<app-create-product
+  (productCreated)="productList.onCreate()"></app-create-product>

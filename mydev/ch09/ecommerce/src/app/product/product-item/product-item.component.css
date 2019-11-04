@@ -1,0 +1,25 @@
+.product-item {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    height: auto;
+    vertical-align: top;
+  }
+  .product-item img{
+    max-width: 200px;
+  }
+  .product-item .details {
+    text-align: center;
+  }
+  
+  .product-item.sale {
+    background-color: lightgreen;
+
+  }
+
+  .product-item.sale h4 {
+    color: green;
+  }
+
+
